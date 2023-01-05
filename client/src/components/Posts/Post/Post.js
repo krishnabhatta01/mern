@@ -14,7 +14,7 @@ import moment from "moment";
 
 import useStyles from "./styles";
 
-const Post = ({ post }) => {
+const Post = ({ post, setCurrentId }) => {
 
   const classes = useStyles();
 
@@ -22,9 +22,7 @@ const Post = ({ post }) => {
     <Card className={classes.card}>
       <CardMedia
         className={classes.media}
-        image={
-          post.selectedFile 
-        }
+        image={post.selectedFile}
         title={post.title}
       />
       <div className={classes.overlay}>
@@ -37,7 +35,7 @@ const Post = ({ post }) => {
         <Button
           style={{ color: "white" }}
           size="small"
-          onClick={() =>{}}
+          onClick={() => setCurrentId(post._id)}
         >
           <MoreHorizIcon fontSize="default" />
         </Button>
@@ -61,17 +59,13 @@ const Post = ({ post }) => {
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => {}}
-        >
+        <Button size="small" color="primary" onClick={() => {}}>
           <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}
         </Button>
         <Button
           size="small"
           color="primary"
-          onClick={() =>{}}
+          onClick={() => setCurrentId(post._id)}
         >
           <DeleteIcon fontSize="small" /> Delete
         </Button>
