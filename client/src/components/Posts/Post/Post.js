@@ -11,20 +11,21 @@ import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import DeleteIcon from "@mui/icons-material/Delete";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import moment from "moment";
+import { useDispatch } from 'react-redux';
 
 import useStyles from "./styles";
+import { deletePost } from '../../../actions/posts';
 
-const Post = ({ post }) => {
+const Post = ({ post, setCurrentId }) => {
 
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   return (
     <Card className={classes.card}>
       <CardMedia
         className={classes.media}
-        image={
-          post.selectedFile 
-        }
+        image={post.selectedFile}
         title={post.title}
       />
       <div className={classes.overlay}>
@@ -37,7 +38,7 @@ const Post = ({ post }) => {
         <Button
           style={{ color: "white" }}
           size="small"
-          onClick={() =>{}}
+          onClick={() => setCurrentId(post._id)}
         >
           <MoreHorizIcon fontSize="default" />
         </Button>
@@ -61,17 +62,13 @@ const Post = ({ post }) => {
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => {}}
-        >
+        <Button size="small" color="primary" onClick={() => {}}>
           <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}
         </Button>
         <Button
           size="small"
           color="primary"
-          onClick={() =>{}}
+          onClick={() => dispatch(deletePost(post._id))}
         >
           <DeleteIcon fontSize="small" /> Delete
         </Button>
