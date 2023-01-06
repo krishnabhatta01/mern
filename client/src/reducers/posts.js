@@ -14,8 +14,8 @@ export default (posts=[], action) => {
         );
 
       case "DELETE":
-        return posts.map((post) =>
-          post._id === action.payload._id ? action.payload : post
+        return posts.filter((post) =>
+          post._id !== action.payload
         );
 
       default:
